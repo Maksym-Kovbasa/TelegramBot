@@ -16,8 +16,7 @@ public class MessageService {
     }
 
     public String getHelpMessage() {
-        return "Available commands:\n\n" +
-                Arrays.stream(Command.values())
+        return Arrays.stream(Command.values())
                         .filter(cmd -> cmd != Command.UNKNOWN)
                         .map(cmd -> cmd.getCommandName() + " - " + cmd.getDescription())
                         .collect(Collectors.joining("\n"));
