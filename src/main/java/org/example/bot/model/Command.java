@@ -9,6 +9,7 @@ public enum Command {
     START("/start", "Start working with the bot", "Start"),
     HELP("/help", "Get help", "Help"),
     INFO("/info", "Information about the bot", "Info"),
+    CURRENCY("/currency", "Get currency information", "Currency"),
     SOMETHING("/something", "Something special", "Something"),
     UNKNOWN("unknown", "Unknown command", "");
 

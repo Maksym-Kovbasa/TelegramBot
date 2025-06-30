@@ -34,4 +34,16 @@ public class MessageService {
     public String getUnknownCommandMessage() {
         return "Command not found";
     }
+
+    public String getCurrencyMessage(){
+        return "💱 Enter the currency code whose official exchange rate " +
+               "you want to know in relation to UAH.\n\n" +
+               "Examples: USD, EUR, PLN, GBP, CHF\n" +
+               "📝 Please enter 3-letter currency code.";
+    }
+
+    public String getInvalidCurrencyCodeMessage() {
+        return "❌ Invalid currency code format.\n" +
+               "Please enter a 3-letter currency code (e.g., USD, EUR, PLN).";
+    }
 }

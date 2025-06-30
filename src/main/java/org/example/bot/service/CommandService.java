@@ -5,6 +5,7 @@ import com.pengrad.telegrambot.model.request.ReplyKeyboardRemove;
 import com.pengrad.telegrambot.request.SendMessage;
 import lombok.RequiredArgsConstructor;
 import org.example.bot.model.Command;
+import org.example.bot.model.CurrencyModel;
 import org.springframework.stereotype.Service;
 import com.pengrad.telegrambot.model.request.ReplyKeyboardMarkup;
 
@@ -18,6 +19,7 @@ import java.util.stream.Stream;
 public class CommandService {
     private final TelegramBot bot;
     private final MessageService messageService;
+    private final CurrencyService currencyService;
 
     public void processCommand(Long chatId, String commandName, String userName) {
         Command command = Command.fromString(commandName);
@@ -25,6 +27,7 @@ public class CommandService {
             case START -> messageService.getStartMessage(userName);
             case HELP -> messageService.getHelpMessage();
             case INFO -> messageService.getInfoMessage();
+            case CURRENCY -> messageService.getCurrencyMessage();
             case SOMETHING -> "This is something special!";
             case UNKNOWN -> messageService.getUnknownCommandMessage();
         };
@@ -59,6 +62,18 @@ public class CommandService {
 
     public void processButtonCommand(Long chatId, String buttonLabel, String userName) {
         Command command = Command.fromButtonLabel(buttonLabel);
-        processCommand(chatId, command.getCommandName(), userName);
+        if (command != Command.UNKNOWN) {
+            processCommand(chatId, command.getCommandName(), userName);
+        } else if (buttonLabel.matches("^[A-Za-z]{3}$")) {
+            CurrencyModel model = new CurrencyModel();
+            try {
+                String currencyInfo = currencyService.getCurrencyRate(buttonLabel.toUpperCase(), model);
+                bot.execute(new SendMessage(chatId, currencyInfo));
+            } catch (Exception e) {
+                bot.execute(new SendMessage(chatId, messageService.getInvalidCurrencyCodeMessage()));
+            }
+        } else {
+            bot.execute(new SendMessage(chatId, messageService.getUnknownCommandMessage()));
+        }
     }
 }
