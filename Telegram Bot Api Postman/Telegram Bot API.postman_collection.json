@@ -1,0 +1,358 @@
+{
+	"info": {
+		"_postman_id": "557cf4d5-6f0f-4a64-8633-efda396e24f3",
+		"name": "Telegram Bot API",
+		"description": "Запити до Telegram Bot API для тестування через Postman",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "44833092"
+	},
+	"item": [
+		{
+			"name": "getMe",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.telegram.org/bot{{TOKEN}}/getMe",
+					"protocol": "https",
+					"host": [
+						"api",
+						"telegram",
+						"org"
+					],
+					"path": [
+						"bot{{TOKEN}}",
+						"getMe"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "sendPoll",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"chat_id\": \"{{CHAT_ID}}\",\n  \"question\": \"Який ваш улюблений колір?\",\n  \"options\": [\"Червоний\", \"Синій\", \"Зелений\"],\n  \"is_anonymous\": false\n}"
+				},
+				"url": {
+					"raw": "https://api.telegram.org/bot{{TOKEN}}/sendPoll",
+					"protocol": "https",
+					"host": [
+						"api",
+						"telegram",
+						"org"
+					],
+					"path": [
+						"bot{{TOKEN}}",
+						"sendPoll"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "sendMessage",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"chat_id\": \"{{CHAT_ID}}\",\n  \"text\": \"Привіт з Postman!\"\n}"
+				},
+				"url": {
+					"raw": "https://api.telegram.org/bot{{TOKEN}}/sendMessage",
+					"protocol": "https",
+					"host": [
+						"api",
+						"telegram",
+						"org"
+					],
+					"path": [
+						"bot{{TOKEN}}",
+						"sendMessage"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getUpdates",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.telegram.org/bot{{TOKEN}}/getUpdates",
+					"protocol": "https",
+					"host": [
+						"api",
+						"telegram",
+						"org"
+					],
+					"path": [
+						"bot{{TOKEN}}",
+						"getUpdates"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "sendPhoto",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "chat_id",
+							"value": "{{CHAT_ID}}",
+							"type": "text"
+						},
+						{
+							"key": "photo",
+							"type": "file",
+							"src": "postman-cloud:///1f052ad0-53c1-4990-9ce6-a86963d3b26f"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://api.telegram.org/bot{{TOKEN}}/sendPhoto",
+					"protocol": "https",
+					"host": [
+						"api",
+						"telegram",
+						"org"
+					],
+					"path": [
+						"bot{{TOKEN}}",
+						"sendPhoto"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "sendDocument",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "chat_id",
+							"value": "{{CHAT_ID}}",
+							"type": "text"
+						},
+						{
+							"key": "document",
+							"type": "file",
+							"src": "postman-cloud:///1f052ad1-f193-4190-838a-4c402ac5dde8"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://api.telegram.org/bot{{TOKEN}}/sendDocument",
+					"protocol": "https",
+					"host": [
+						"api",
+						"telegram",
+						"org"
+					],
+					"path": [
+						"bot{{TOKEN}}",
+						"sendDocument"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "sendLocation",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"chat_id\": \"{{CHAT_ID}}\",\n  \"latitude\": 50.4501,\n  \"longitude\": 30.5234\n}"
+				},
+				"url": {
+					"raw": "https://api.telegram.org/bot{{TOKEN}}/sendLocation",
+					"protocol": "https",
+					"host": [
+						"api",
+						"telegram",
+						"org"
+					],
+					"path": [
+						"bot{{TOKEN}}",
+						"sendLocation"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "sendVenue",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"chat_id\": \"{{CHAT_ID}}\",\n  \"latitude\": 50.4501,\n  \"longitude\": 30.5234,\n  \"title\": \"Майдан Незалежності\",\n  \"address\": \"Київ, Україна\"\n}"
+				},
+				"url": {
+					"raw": "https://api.telegram.org/bot{{TOKEN}}/sendVenue",
+					"protocol": "https",
+					"host": [
+						"api",
+						"telegram",
+						"org"
+					],
+					"path": [
+						"bot{{TOKEN}}",
+						"sendVenue"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "sendMessage with buttons",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"chat_id\": \"{{CHAT_ID}}\",\n  \"text\": \"Оберіть варіант:\",\n  \"reply_markup\": {\n    \"keyboard\": [\n      [\"Варіант 1\", \"Варіант 2\"],\n      [\"Варіант 3\"]\n    ],\n    \"resize_keyboard\": true,\n    \"one_time_keyboard\": true\n  }\n}"
+				},
+				"url": {
+					"raw": "https://api.telegram.org/bot{{TOKEN}}/sendMessage",
+					"protocol": "https",
+					"host": [
+						"api",
+						"telegram",
+						"org"
+					],
+					"path": [
+						"bot{{TOKEN}}",
+						"sendMessage"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteMessage",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"chat_id\": \"{{CHAT_ID}}\",\n  \"message_id\": 1\n}"
+				},
+				"url": {
+					"raw": "https://api.telegram.org/bot{{TOKEN}}/deleteMessage",
+					"protocol": "https",
+					"host": [
+						"api",
+						"telegram",
+						"org"
+					],
+					"path": [
+						"bot{{TOKEN}}",
+						"deleteMessage"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getWebhookInfo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.telegram.org/bot{{TOKEN}}/getWebhookInfo",
+					"protocol": "https",
+					"host": [
+						"api",
+						"telegram",
+						"org"
+					],
+					"path": [
+						"bot{{TOKEN}}",
+						"getWebhookInfo"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "TOKEN",
+			"value": "YOUR_BOT_TOKEN"
+		},
+		{
+			"key": "CHAT_ID",
+			"value": "YOUR_CHAT_ID"
+		}
+	]
+}
